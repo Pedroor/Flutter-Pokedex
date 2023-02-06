@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pokedex/common/repositories/pokemon_repository.dart';
-import 'package:flutter_pokedex/home/container/home_container.dart';
-import 'package:flutter_pokedex/home/pages/home_page.dart';
+import 'package:flutter_pokedex/screens/home/container/home_container.dart';
+import 'package:flutter_pokedex/screens/route.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,9 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: HomeContainer(
-        repository: PokemonRepository(dio: Dio()),
-      ),
+        home: PokedexRoute(repository: PokemonRepository(dio: Dio()))
     );
   }
 }
