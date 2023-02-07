@@ -12,18 +12,28 @@ class PokemonItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        children: [
-          Text(pokemon.name),
-          Row(
-            children: [
-              Column(
-                children: pokemon.type.map((e) => TypeWidget(name: e)).toList(),
-              ),
-              Image.network(pokemon.image)
-            ],
-          )
-        ],
+      decoration: BoxDecoration(
+        color: pokemon.baseColor!.withOpacity(0.7),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(pokemon.name),
+            Row(
+              children: [
+                Column(
+                  children:
+                      pokemon.type.map((e) => TypeWidget(name: e)).toList(),
+                ),
+                Flexible(child: Image.network(pokemon.image))
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

@@ -15,15 +15,19 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: GridView.count(
-      crossAxisCount: 2,
-      crossAxisSpacing: 24,
-      mainAxisSpacing: 24,
-      children: list
-          .map(
-            (e) => PokemonItemWidget(pokemon: e),
-          )
-          .toList(),
+        body: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: GridView.count(
+        crossAxisCount: 2,
+        crossAxisSpacing: 24,
+        mainAxisSpacing: 24,
+              
+        children: list
+            .map(
+              (e) => PokemonItemWidget(pokemon: e),
+            )
+            .toList(),
+      ),
     ));
   }
 }
