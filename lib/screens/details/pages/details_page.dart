@@ -9,13 +9,26 @@ class DetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Scaffold(
-        body: Column(
+      appBar: AppBar(
+        title: Text(name),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24),
+        child: Column(
           children: [
             SizedBox(
               height: 400,
-              child: PageView(
-                children: list.map((e) => Text(e.name)).toList(),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 32),
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: list
+                      .map((e) => Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(e.name),
+                          ))
+                      .toList(),
+                ),
               ),
             )
           ],
