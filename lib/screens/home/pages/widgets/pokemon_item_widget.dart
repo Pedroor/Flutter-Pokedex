@@ -13,7 +13,7 @@ class PokemonItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: pokemon.baseColor!.withOpacity(0.7),
+        color: pokemon.baseColor!.withOpacity(0.8),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Padding(
@@ -22,10 +22,18 @@ class PokemonItemWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(pokemon.name),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(pokemon.name),
+                Text(pokemon.num)],
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children:
                       pokemon.type.map((e) => TypeWidget(name: e)).toList(),
                 ),
