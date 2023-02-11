@@ -19,12 +19,15 @@ class HomePage extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: GridView.count(
         crossAxisCount: 2,
-        crossAxisSpacing: 24,
-        mainAxisSpacing: 24,
+        crossAxisSpacing: 12,
+        mainAxisSpacing: 12,
               
         children: list
             .map(
-              (e) => PokemonItemWidget(pokemon: e),
+              (e) => PokemonItemWidget(
+                pokemon: e,
+                onTap: onItemTap,
+              ),
             )
             .toList(),
       ),
