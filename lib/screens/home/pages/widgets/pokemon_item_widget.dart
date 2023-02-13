@@ -4,11 +4,8 @@ import 'package:flutter_pokedex/screens/details/container/details_container.dart
 import 'package:flutter_pokedex/screens/home/pages/widgets/type_widget.dart';
 
 class PokemonItemWidget extends StatelessWidget {
-  const PokemonItemWidget({
-    super.key,
-    required this.pokemon,
-    required this.onTap
-  });
+  const PokemonItemWidget(
+      {super.key, required this.pokemon, required this.onTap});
   final Pokemon pokemon;
   final Function(String, DetailsArguments) onTap;
 
@@ -60,8 +57,8 @@ class PokemonItemWidget extends StatelessWidget {
                       ),
                       Flexible(
                           child: Container(
-                        height: 120,
-                        width: 120,
+                        height: 105,
+                        width: 105,
                       ))
                     ],
                   )

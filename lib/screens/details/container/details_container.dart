@@ -13,9 +13,13 @@ class DetailsArguments {
 
 class DetailsContainer extends StatelessWidget {
   const DetailsContainer(
-      {super.key, required this.repository, required this.arguments});
+      {super.key,
+      required this.repository,
+      required this.arguments,
+      required this.onBack});
   final IPokemonRepository repository;
   final DetailsArguments arguments;
+  final VoidCallback onBack;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +33,10 @@ class DetailsContainer extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.done &&
               snapshot.hasData) {
             return DetailsPage(
-                pokemon: arguments.pokemon, list: snapshot.data!);
+              pokemon: arguments.pokemon,
+              list: snapshot.data!,
+              onBack: onBack,
+            );
           }
 
           if (snapshot.hasError) {
