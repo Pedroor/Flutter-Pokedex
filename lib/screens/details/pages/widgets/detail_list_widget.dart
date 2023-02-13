@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_pokedex/common/models/pokemon.dart';
 
 class DetailListWidget extends StatelessWidget {
-  const DetailListWidget({
-    super.key,
-    required this.pokemon,
-    required this.list,
-  });
+  const DetailListWidget(
+      {super.key,
+      required this.pokemon,
+      required this.list,
+      required this.controller});
   final Pokemon pokemon;
   final List<Pokemon> list;
+  final PageController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +21,7 @@ class DetailListWidget extends StatelessWidget {
       child: Container(
         color: pokemon.baseColor,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -45,12 +47,18 @@ class DetailListWidget extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 150,
+              height: 200,
               width: double.infinity,
               child: PageView(
+                controller: controller,
                 children: list
                     .map(
-                      (e) => Image.network(pokemon.image),
+                      (e) => Image.network(
+                        e.image,
+                        height: 100,
+                        width: 200,
+                        fit: BoxFit.contain,
+                      ),
                     )
                     .toList(),
               ),

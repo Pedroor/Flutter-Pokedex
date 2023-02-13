@@ -5,14 +5,19 @@ import 'package:flutter_pokedex/screens/home/pages/widgets/type_widget.dart';
 
 class PokemonItemWidget extends StatelessWidget {
   const PokemonItemWidget(
-      {super.key, required this.pokemon, required this.onTap});
+      {super.key,
+      required this.pokemon,
+      required this.onTap,
+      required this.index});
   final Pokemon pokemon;
   final Function(String, DetailsArguments) onTap;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => onTap('/details', DetailsArguments(pokemon: pokemon)),
+      onTap: () =>
+          onTap('/details', DetailsArguments(pokemon: pokemon, index: index)),
       child: Stack(
         children: [
           Container(
