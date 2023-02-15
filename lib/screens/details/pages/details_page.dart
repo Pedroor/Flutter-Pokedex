@@ -4,16 +4,19 @@ import 'package:flutter_pokedex/screens/details/pages/widgets/detail_app_bar_wid
 import 'package:flutter_pokedex/screens/details/pages/widgets/detail_list_widget.dart';
 
 class DetailsPage extends StatelessWidget {
-  const DetailsPage(
-      {super.key,
-      required this.pokemon,
-      required this.onBack,
-      required this.list,
-      required this.controller});
+  const DetailsPage({
+    super.key,
+    required this.pokemon,
+    required this.onBack,
+    required this.list,
+    required this.controller,
+    required this.onChangePokemon,
+  });
   final Pokemon pokemon;
   final List<Pokemon> list;
   final VoidCallback onBack;
   final PageController controller;
+  final ValueChanged<Pokemon> onChangePokemon;
 
   @override
   Widget build(BuildContext context) {

@@ -27,10 +27,11 @@ class DetailsContainer extends StatefulWidget {
 }
 
 class _DetailsContainerState extends State<DetailsContainer> {
-  late PageController controller;
+  late PageController _controller;
+  Pokemon? _pokemon;
   @override
   void initState() {
-    controller = PageController(
+    _controller = PageController(
         viewportFraction: 0.5, initialPage: widget.arguments.index!);
     super.initState();
   }
@@ -46,11 +47,22 @@ class _DetailsContainerState extends State<DetailsContainer> {
 
           if (snapshot.connectionState == ConnectionState.done &&
               snapshot.hasData) {
+            // ignore: prefer_conditional_assignment
+            if (_pokemon == null) {
+              _pokemon = widget.arguments.pokemon;
+            }
+            ;
+
             return DetailsPage(
-              pokemon: widget.arguments.pokemon,
+              pokemon: widget.arguments.pokemon!,
               list: snapshot.data!,
               onBack: widget.onBack,
-              controller: controller,
+              controller: _controller,
+              onChangePokemon: (Pokemon value) {
+                setState(() {
+                  _pokemon = value;
+                });
+              },
             );
           }
 
