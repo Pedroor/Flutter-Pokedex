@@ -14,7 +14,7 @@ class HomeContainer extends StatelessWidget {
     required this.onItemTap,
   });
   final IPokemonRepository repository;
-  final Function(String, DetailsArguments) onItemTap;
+  final Function(String, DetailArguments) onItemTap;
 
   @override
   Widget build(BuildContext context) {

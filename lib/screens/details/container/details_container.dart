@@ -6,71 +6,74 @@ import 'package:flutter_pokedex/common/widgets/pokemon_error.dart';
 import 'package:flutter_pokedex/common/widgets/pokemon_loading.dart';
 import 'package:flutter_pokedex/screens/details/pages/details_page.dart';
 
-class DetailsArguments {
-  DetailsArguments({required this.pokemon, this.index = 0});
+class DetailArguments {
+  DetailArguments({this.index = 0, required this.pokemon});
   final Pokemon pokemon;
   final int? index;
 }
 
-class DetailsContainer extends StatefulWidget {
-  const DetailsContainer(
-      {super.key,
+class DetailContainer extends StatefulWidget {
+  const DetailContainer(
+      {Key? key,
       required this.repository,
       required this.arguments,
-      required this.onBack});
+      required this.onBack})
+      : super(key: key);
   final IPokemonRepository repository;
-  final DetailsArguments arguments;
+  final DetailArguments arguments;
   final VoidCallback onBack;
 
   @override
-  State<DetailsContainer> createState() => _DetailsContainerState();
+  _DetailContainerState createState() => _DetailContainerState();
 }
 
-class _DetailsContainerState extends State<DetailsContainer> {
+class _DetailContainerState extends State<DetailContainer> {
   late PageController _controller;
+  late Future<List<Pokemon>> _future;
   Pokemon? _pokemon;
   @override
   void initState() {
     _controller = PageController(
         viewportFraction: 0.5, initialPage: widget.arguments.index!);
+    _future = widget.repository.getAllPokemons();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Pokemon>>(
-        future: widget.repository.getAllPokemons(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return PokemonLoading();
+      future: _future,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return PokemonLoading();
+        }
+
+        if (snapshot.connectionState == ConnectionState.done &&
+            snapshot.hasData) {
+          if (_pokemon == null) {
+            _pokemon = widget.arguments.pokemon;
           }
+          return DetailsPage(
+            pokemon: _pokemon!,
+            list: snapshot.data!,
+            onBack: widget.onBack,
+            controller: _controller,
+            onChangePokemon: (Pokemon value) {
+              setState(() {
+                _pokemon = value;
+              });
+            },
+          );
+        }
 
-          if (snapshot.connectionState == ConnectionState.done &&
-              snapshot.hasData) {
-            // ignore: prefer_conditional_assignment
-            if (_pokemon == null) {
-              _pokemon = widget.arguments.pokemon;
-            }
-            ;
+        if (snapshot.hasError) {
+          return PokemonError(
+            error: (snapshot.error as Failure).message!,
+          );
+        }
 
-            return DetailsPage(
-              pokemon: widget.arguments.pokemon!,
-              list: snapshot.data!,
-              onBack: widget.onBack,
-              controller: _controller,
-              onChangePokemon: (Pokemon value) {
-                setState(() {
-                  _pokemon = value;
-                });
-              },
-            );
-          }
-
-          if (snapshot.hasError) {
-            return PokemonError(error: (snapshot.error as Failure).message!);
-          }
-
-          return Container();
-        });
+        return Container();
+      },
+    );
   }
 }

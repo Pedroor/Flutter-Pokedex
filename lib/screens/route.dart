@@ -25,9 +25,9 @@ class PokedexRoute extends StatelessWidget {
 
         if (settings.name == '/details') {
           return MaterialPageRoute(builder: (context) {
-            return DetailsContainer(
+            return DetailContainer(
               repository: repository,
-              arguments: (settings.arguments as DetailsArguments),
+              arguments: (settings.arguments as DetailArguments),
               onBack: () => Navigator.of(context).pop(),
             );
           });

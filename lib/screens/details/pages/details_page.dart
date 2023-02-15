@@ -31,6 +31,7 @@ class DetailsPage extends StatelessWidget {
             pokemon: pokemon,
             list: list,
             controller: controller,
+            onChangePokemon: onChangePokemon,
           )
         ],
       ),

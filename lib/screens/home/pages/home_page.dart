@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
     required this.onItemTap,
   }) : super(key: key);
   final List<Pokemon> list;
-  final Function(String, DetailsArguments) onItemTap;
+  final Function(String, DetailArguments) onItemTap;
 
   @override
   Widget build(BuildContext context) {
