@@ -14,7 +14,7 @@
 </p>
 
 <h1 align="center">
- <img alt="Home" src="https://imgur.com/L1qBD4c" width="400" />
+ <img alt="Home" src="https://i.imgur.com/V4p471O.png" width="400" />
  <img alt="Home" src="https://i.imgur.com/KS78XXU.png" width="400" />
 
 </h1>
