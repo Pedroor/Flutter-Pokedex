@@ -25,54 +25,38 @@ Este repositório contém uma pouco da história do universo Pokemon.
 
 Pokedex é uma aplicação no qual o usuário pode visualizar uma listagem de Pokemons, buscar e ver os detalhes de um pokemon específico, etc... Para obter os dados dos Pokemons foi utilizada a [PokeApi](https://pokeapi.co/).
 
-O objetivo principal desse projeto foi colocar meus conhecimentos em React-Native na prática com uma quantidade expressiva de dados sem perca de performance por isso dou todos os meus créditos aos criadores do React-Query (https://react-query.tanstack.com/).
-
 ## :hammer: Tecnologias
 
 Este projeto foi desenvolvido com as seguintes tecnologias:
 
-- [React-Native CLI](https://reactnative.dev/docs/environment-setup)
-- [React Native](https://reactnative.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [React Query](https://react-query.tanstack.com/)
-- [React Navigation](https://reactnavigation.org/)
-- [React Native Gesture Handler](https://kmagiera.github.io/react-native-gesture-handler/)
-- [Axios](https://github.com/axios/axios)
-- [Styled Components](https://styled-components.com/)
-- [React-Native-Vector-Icons](https://github.com/oblador/react-native-vector-icons)
-- [VS Code](https://code.visualstudio.com/) com [Prettier](https://prettier.io/)
+- [Flutter](https://flutter.dev/)
 
 ## :books: Requisitos
 - Ter [**Git**](https://git-scm.com/) para clonar o projeto.
-- - Ter [**React-Native**](https://reactnative.dev/docs/environment-setup) configurado para executar o projeto.
-- Ter [**Node.js**](https://nodejs.org/en/) instalado.
+- Ter [**Flutter**](https://docs.flutter.dev/get-started/install) configurado para executar o projeto.
 - Um dispositivo ou emulador iOS ou Android
 
 ## :rocket: Começando
 ``` bash
   # Clonar o projeto:
-  $ https://github.com/Pedroor/Pokedex.git
+  $ https://github.com/Pedroor/Flutter-Pokedex.git
 
   # Entrar no diretório:
-  $ cd Pokedex
+  $ cd Flutter-Pokedex
   
   # Instalar as dependências:
-  $ yarn
+  $ flutter pub get
 ```
 
 ## :iphone: Iniciando mobile
 ```bash
-  # No mesmo diretorio abrir 2 consoles no terminal:
-  # No primeiro console:
-   
-  $ react-native start
+  # open the simulator 
+  $ run the project
 
-  # No segundo console:
-  $ react-native run-android
 ```
 
 # :thought_balloon: Inspiração
-- Design inspirado pela (https://dribbble.com/shots/14241781-Pok-dex) feita por [Bruna Campos](https://dribbble.com/brucampos).
-- Não consegui replicar 100% o layout devido ao tempo e devido a manipulação de alguns dados da PokeApi entretanto foi uma ótima inspiração.
+- Já havia feito algo parecido há um tempo atrás usando React-Native e resolvi experimentar em uma stack diferente da qual estou habituado.
+
 
 Feito com ❤️ por Pedro Arthur 👋🏻 [Get in touch!](https://github.com/Pedroor)
